@@ -49,7 +49,7 @@ export default defineConfig({
 
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'muyu.png'],
       manifest: {
         name: 'Mokugyo',
         short_name: 'Mokugyo',
