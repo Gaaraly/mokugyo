@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import path from 'path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
