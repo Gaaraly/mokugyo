@@ -3,12 +3,6 @@ import { useSound } from '@vueuse/sound'
 import knocked from '/knock.mp3'
 
 const { play } = useSound(knocked)
-
-function handleCilck() {
-  // eslint-disable-next-line no-console
-  console.log('click')
-  play()
-}
 </script>
 
 <template>
@@ -22,7 +16,7 @@ function handleCilck() {
       flex justify-center items-center select-none
       animate-bounce-in animate-duration-none
       active:animate-none hover:animate-duration-500
-      @click="handleCilck"
+      @click="play()"
     >
       <!-- Hi -->
       <img
