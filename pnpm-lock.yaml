@@ -8,6 +8,7 @@ specifiers:
   '@vitejs/plugin-vue': ^3.1.2
   '@vue/test-utils': ^2.1.0
   '@vueuse/core': ^9.3.0
+  '@vueuse/sound': ^1.1.7
   eslint: ^8.24.0
   jsdom: ^20.0.1
   taze: ^0.8.2
@@ -25,6 +26,7 @@ specifiers:
 
 dependencies:
   '@vueuse/core': 9.3.0_vue@3.2.40
+  '@vueuse/sound': 1.1.7_vue@3.2.40
   vue: 3.2.40
   vue-router: 4.1.5_vue@3.2.40
 
@@ -2033,6 +2035,15 @@ packages:
       '@vue/compiler-dom': 3.2.40
       '@vue/shared': 3.2.40
 
+  /@vue/composition-api/1.7.1_vue@3.2.40:
+    resolution: {integrity: sha512-xDWoEtxGXhH9Ku3ROYX/rzhcpt4v31hpPU5zF3UeVC/qxA3dChmqU8zvTUYoKh3j7rzpNsoFOwqsWG7XPMlaFA==}
+    requiresBuild: true
+    peerDependencies:
+      vue: '>= 2.5 < 2.7'
+    dependencies:
+      vue: 3.2.40
+    dev: false
+
   /@vue/devtools-api/6.4.3:
     resolution: {integrity: sha512-9WCRwdROJvWcHAdyrR7SZMM/qUvllDZnpndHXokThkUsjnJ2xe4/pvsH9FZrxFe22L+JmDKczL79HjLJ7DK9rg==}
     dev: false
@@ -2115,6 +2126,17 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  /@vueuse/sound/1.1.7_vue@3.2.40:
+    resolution: {integrity: sha512-rn4uIeEz9SqZ82KroFQ4OGXRIZ8cLlvfk/CxfZBBkjfRjE1VpanzKYCAoN3dD716dBfLPsAa6Aq7VV6TpZCpVw==}
+    dependencies:
+      howler: 2.2.3
+      vue-demi: 0.13.11_zv57lmwz3lpne326jxcwg2uc6q
+    optionalDependencies:
+      '@vue/composition-api': 1.7.1_vue@3.2.40
+    transitivePeerDependencies:
+      - vue
+    dev: false
 
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
@@ -3885,6 +3907,10 @@ packages:
     dependencies:
       lru-cache: 7.14.0
     dev: true
+
+  /howler/2.2.3:
+    resolution: {integrity: sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==}
+    dev: false
 
   /html-encoding-sniffer/3.0.0:
     resolution: {integrity: sha512-oWv4T4yJ52iKrufjnyZPkrN0CH3QnrUqdB6In1g5Fe1mia8GmF36gnfNySxoZtxD5+NmYw1EElVXiBk93UeskA==}
@@ -6253,6 +6279,22 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.40
+
+  /vue-demi/0.13.11_zv57lmwz3lpne326jxcwg2uc6q:
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@vue/composition-api': 1.7.1_vue@3.2.40
+      vue: 3.2.40
+    dev: false
 
   /vue-eslint-parser/9.1.0_eslint@8.24.0:
     resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}

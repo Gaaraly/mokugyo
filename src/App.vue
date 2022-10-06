@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { useSound } from '@vueuse/sound'
+import knocked from '/knock.mp3'
+
+const { play } = useSound(knocked)
+
 function handleCilck() {
   // eslint-disable-next-line no-console
   console.log('click')
+  play()
 }
 </script>
 
@@ -14,15 +20,17 @@ function handleCilck() {
     <div
       w-full h-full
       flex justify-center items-center select-none
+      animate-bounce-in animate-duration-none
+      active:animate-none hover:animate-duration-500
       @click="handleCilck"
     >
       <!-- Hi -->
       <img
-        src="/muyu.png" alt="mokugyo"
-        w-auto h-auto max-w-full max-h-full
-        cursor-pointer
-        animate-bounce-in animate-duration-none
-        active:animate-none hover:animate-duration-500
+        src="/muyu.png"
+        alt="mokugyo" w-auto
+        h-auto max-w-full max-h-full cursor-pointer
+        filter drop-shadow-xl invert-100
+        dark:invert-0
       >
     </div>
     <Footer />
