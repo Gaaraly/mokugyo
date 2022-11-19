@@ -1,26 +1,34 @@
 <script setup lang="ts">
 import { useSound } from '@vueuse/sound'
+import type { VNode } from 'vue'
 import knocked from '/knock.mp3'
 
-const timeStamp = $ref(new Date())
-const { play } = useSound(knocked)
-const tipRef = $ref<HTMLSpanElement>()
+interface ITip {
+  id: string
+  component: VNode
+  show: boolean
+}
 
-let count = $ref(1)
-const theTip = h('span', {
-  class: 'absolute right-20 top-10 text-xl ease-out duration-800',
-}, 'Click me')
 const lists = $ref<ITip[]>([])
+const { play } = useSound(knocked)
+
+const listsExposed = computed(() => lists.filter(it => it.show))
+
+const theTip = h('span', {
+  class: 'absolute right-20 top-10 text-xl ease-out duration-800 tips',
+}, 'Click me')
+
+// const { proxy } = getCurrentInstance() as any
 
 const onClick = () => {
   play()
-  lists.push({ theTip, which: toRaw(++count) })
-  // tipRef.style.top = '0'
-  tipRef.style.opacity = '100'
-  tipRef.style.transform = 'translate3d(0, 0, 0)'
-  tipRef.classList.add('transition-all')
-  tipRef.style.transform = 'translate3d(0, -100%, 0)'
-  tipRef.style.opacity = '0'
+  const id = `${Date.now()}id`
+  lists.push({ component: theTip, id, show: true })
+  // console.log(listsRef.value.map(it=>it.key))
+  setTimeout(() => {
+    // proxy.$refs[id][0].remove()
+    lists.at(-1)!.show = false
+  }, 900)
 }
 </script>
 
@@ -39,7 +47,8 @@ const onClick = () => {
         w-auto h-auto max-w-full max-h-full
       >
         <!-- <Tip /> -->
-        <component :is="tip.theTip" v-for="tip in lists" :key="tip.which" />
+        <!-- <component :is="tip.component" v-for="tip in lists" :key="tip.id" :ref="tip.id" /> -->
+        <component :is="tip.component" v-for="tip in listsExposed" :key="tip.id" />
         <!-- <component :is="theTip" ref="tipRef" :key="timeStamp" /> -->
         <img
           src="/muyu.png" class="muyu"
@@ -68,7 +77,7 @@ const onClick = () => {
   }
 }
 
-/* .tips {
+.tips {
   animation: fadeOutUp 1s ease-in-out;
-} */
+}
 </style>
